@@ -6,41 +6,25 @@
 # Set some initial variables
 NUM_MWORDS=0
 NUM_LONGWORDS=0
+WORDS=
 
-# Debugging stuff
-#echo $@
-#echo $#
-
-# Grab the input words
-if [ $# -gt 0 ]; then
-  # Grab the input words from the command line
-  WORDS=$@
+# If the input is a pipe, grab the words from that
+if [ -p /dev/stdin ]; then
+  WORDS=$(cat -)
 else
-  # Debugging stuff
-  # echo "No input given via command line"
-
-  # No command line input was given, so try reading from a pipe
-  read WORDS
+  # Not given a pipe, so check for input on the command line
+  if [ $# -gt 0 ]; then
+    WORDS=$@
+  fi
 fi
 
 # Test words
 #WORDS="MOOSES AREN'T GOOSES... or GEESE for that matter"
 
-# Exit early if no input was given
-if [ -z "WORDS" ]; then
-  # TODO: Maybe move the count reporting to a function and call it from here
-  echo "No input given"
-  exit
-fi
-
 # Loop around, processing all of the input words
 for WORD in $WORDS
 do
-
-  # Debugging stuff
-  #echo $WORD
-
-  # Retrieve the first character in a word
+  # Retrieve the first character in the word
   FIRST_CHAR=`echo ${WORD} | cut -b 1`
 
   # Check if the word started with an 'm'
@@ -54,13 +38,12 @@ do
   WORD_LEN=`echo ${WORD} | wc -c`
   let "WORD_LEN--"
 
-  # If the word was longer than 5 characters, add it to the word count total
+  # If the word was longer than 5 characters, add it to the long word count total
   if [ $WORD_LEN -gt 5 ]; then
     let "NUM_LONGWORDS++"
   fi
-
 done
 
-# Display the final word count
+# Display the final word count totals
 echo "Number of words starting with case-insensitive 'm': ${NUM_MWORDS}"
 echo "Number of words longer than 5 characters: ${NUM_LONGWORDS}"
