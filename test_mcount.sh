@@ -66,4 +66,7 @@ if [ $FAILED -eq 0 ]; then
   echo All tests passed
 else
   echo Some tests failed
+
+  # Return a non-zero exit status, so this can be called from other scripts
+  exit 1
 fi

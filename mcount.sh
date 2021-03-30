@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# Processes text input returning the number of words start with "M" or "m",
-# and the count of all words longer than 5 chars.
+# Processes text input, returning the number of words starting with
+# "M" or "m", and the count of all words longer than 5 characters.
 
 # Set some initial variables
 NUM_MWORDS=0
