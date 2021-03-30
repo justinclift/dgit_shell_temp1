@@ -9,12 +9,29 @@ NUM_LONGWORDS=0
 
 # Debugging stuff
 #echo $@
+#echo $#
+
+# Grab the input words
+if [ $# -gt 0 ]; then
+  # Grab the input words from the command line
+  WORDS=$@
+else
+  # Debugging stuff
+  # echo "No input given via command line"
+
+  # No command line input was given, so try reading from a pipe
+  read WORDS
+fi
 
 # Test words
 #WORDS="MOOSES AREN'T GOOSES... or GEESE for that matter"
 
-# Grab all of the words
-WORDS=$@
+# Exit early if no input was given
+if [ -z "WORDS" ]; then
+  # TODO: Maybe move the count reporting to a function and call it from here
+  echo "No input given"
+  exit
+fi
 
 # Loop around, processing all of the input words
 for WORD in $WORDS
