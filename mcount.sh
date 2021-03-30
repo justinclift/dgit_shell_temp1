@@ -5,10 +5,10 @@
 
 # Set some initial variables
 NUM_MWORDS=0
-NUM_LONGWORDS=456
+NUM_LONGWORDS=0
 
 # Test word
-WORD="MOOSE"
+WORD="MOOSES"
 
 # Retrieve the first character in a word
 FIRST_CHAR=`echo ${WORD} | cut -b 1`
@@ -21,8 +21,13 @@ elif [ $FIRST_CHAR = "M" ]; then
 fi
 
 # Count the number of characters in the word
+WORD_LEN=`echo ${WORD} | wc -c`
+let "WORD_LEN--"
 
-# To Do ...
+# If the word was longer than 5 characters, add it to the word count total
+if [ $WORD_LEN -gt 5 ]; then
+	let "NUM_LONGWORDS++"
+fi
 
 # Display the final word count
 echo "Number of words starting with case-insensitive 'm': ${NUM_MWORDS}"
