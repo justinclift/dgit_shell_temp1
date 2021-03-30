@@ -8,18 +8,20 @@ NUM_MWORDS=0
 NUM_LONGWORDS=0
 
 # Debugging stuff
-echo $@
+#echo $@
 
 # Test words
-WORDS="MOOSES AREN'T GOOSES... or GEESE for that matter"
+#WORDS="MOOSES AREN'T GOOSES... or GEESE for that matter"
 
-#for WORD in $@
+# Grab all of the words
+WORDS=$@
 
+# Loop around, processing all of the input words
 for WORD in $WORDS
 do
 
   # Debugging stuff
-  echo $WORD
+  #echo $WORD
 
   # Retrieve the first character in a word
   FIRST_CHAR=`echo ${WORD} | cut -b 1`
