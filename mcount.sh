@@ -18,9 +18,6 @@ else
   fi
 fi
 
-# Test words
-#WORDS="MOOSES AREN'T GOOSES... or GEESE for that matter"
-
 # Loop around, processing all of the input words
 for WORD in $WORDS
 do

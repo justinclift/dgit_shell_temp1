@@ -14,12 +14,12 @@ Scripts are often combined to form pipelines; don't assume that input might come
 Make sure you implement this test like you would all your production code. Other candidates might want to extend it one day!
 ```
 
-Initial thinking is that this sounds pretty simple.  Not sure if it's worth
-adding a test suite (prob wouldn't hurt), but we'll see.
+### Files present
 
-If it turns out to have unexpected/weird edge cases, then a test suite
-might actually not over-complicate things. :)
+* mcount.sh - This is the script.  Runs fine when given arguments via command line or shell pipe.
+* test_mcount.sh - Super simple test harness for the above mcount.sh script.  Could do with more test cases. ;)
+* test_input.txt - Example test case.  Can be used via `cat test_input.txt | ./mcount.sh`
 
-NOTE - Going to assume ASCII character input for this (KISS), as I'm not
+NOTE - I'm going to assume ASCII character input for this (KISS), as I'm not
 (yet) sure how bash handles unicode outside of the ascii range (eg multiple
 bytes per code point).
