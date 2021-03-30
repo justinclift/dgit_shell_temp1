@@ -11,11 +11,9 @@ WORDS=
 # If the input is a pipe, grab the words from that
 if [ -p /dev/stdin ]; then
   WORDS=$(cat -)
-else
+elif [ $# -gt 0 ]; then
   # Not given a pipe, so check for input on the command line
-  if [ $# -gt 0 ]; then
-    WORDS=$@
-  fi
+  WORDS=$@
 fi
 
 # Loop around, processing all of the input words
