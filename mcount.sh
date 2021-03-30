@@ -8,9 +8,26 @@ COUNT=0
 WORDS=
 
 # Grab any mode switch command line options
-getopts ":ml" MODE
+getopts ":mlh" MODE
 
-# TODO: Add help text
+# Display help text if needed
+if [ "$MODE" = "h" ]; then
+  echo "${0} can either count the number of words starting with 'm'"
+  echo "     (case insensitive), or it can count the number of words"
+  echo "     longer than 5 characters ('long word' mode)."
+  echo
+  echo "     Use '-m' to specify the m word counting mode"
+  echo "     Use '-l' to specify the 'long word' counting mode"
+  echo
+  echo "     eg:"
+  echo "          ${0} -m MOOSES AREN'T GEESE"
+  echo "          ${0} -l MOOSES AREN'T GEESE"
+  echo
+  echo "     Using a pipe for input also works:"
+  echo "          echo MOOSES AREN'T GEESE | ${0} -m"
+  echo "          echo MOOSES AREN'T GEESE | ${0} -l"
+  exit
+fi
 
 # If an unknown option was given, default to counting m words
 if [ "$MODE" = "?" ]; then
