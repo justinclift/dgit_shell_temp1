@@ -18,7 +18,7 @@ Make sure you implement this test like you would all your production code. Other
 
 * mcount.sh - This is the script.  Runs fine when given arguments via command line or shell pipe.
 * test_mcount.sh - Super simple test harness for the above mcount.sh script.  Could do with more test cases. :wink:
-* test_input.txt - Example test case.  Can be used via `cat test_input.txt | ./mcount.sh`
+* test_input.txt - Example test case.  Can be used with cat.  eg: `cat test_input.txt | ./mcount.sh -l`
 
 NOTE - I'm going to assume ASCII character input for this (KISS), as I'm not
 (yet) sure how bash handles unicode outside of the ascii range (eg multiple
