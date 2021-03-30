@@ -16,7 +16,7 @@ Make sure you implement this test like you would all your production code. Other
 
 ### Files present
 
-* mcount.sh - This is the script.  Runs fine when given arguments via command line or shell pipe.
+* mcount.sh - This is the script.  Can be called via pipe, or with text input as command line arguments.
 * test_mcount.sh - Super simple test harness for the above mcount.sh script.  Could do with more test cases. :wink:
 * test_input.txt - Example test case.  Can be used with cat.  eg: `cat test_input.txt | ./mcount.sh -l`
 
